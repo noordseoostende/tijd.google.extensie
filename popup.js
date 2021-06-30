@@ -14,3 +14,4 @@ chrome.storage.sync.get(["name"], (res) => {
   const name = res.name ?? "???"
   nameElement.textContent = `citaat van de dag is ${name}`
 })
+
