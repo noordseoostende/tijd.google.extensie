@@ -16,3 +16,7 @@ chrome.storage.sync.get(["name", "notificationTime"], (res) => {
   nameInput.value = res.name ?? "hier moet jouw citaat zijn"
   timeInput.value = res.notificationTime ?? 1000
 })
+
+setInterval(() => {
+  console.log("options")
+}, 1000)
