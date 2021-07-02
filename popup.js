@@ -1,14 +1,20 @@
 const timeElement = document.getElementById("time")
 const nameElement = document.getElementById("name")
-const currentTime = new Date().toLocaleTimeString()
-timeElement.textContent = `The time is: ${currentTime}`
+const timerElement = document.getElementById("timer")
 
-chrome.action.setBadgeText({
-  text: "TIJD", 
-}, () => {
-  console.log("Messenger bag brunch vice butcher irony VHS four dollar toast asymmetrical sustainable bitters kinfolk. Literally kombucha mustache deep v activated charcoal, yr blue bottle leggings pop-up bitters organic fam synth. ")
+function updateTimeElements() {
+
+  chrome.storage.local.get(["timer"], (res) => {
+    const time = res.timer ?? 0 
+    timerElement.textContent = `De timer staat op ${time} seconden`
+  })
+  const currentTime = new Date().toLocaleTimeString()
+  timeElement.textContent = `The time is: ${currentTime}`
 }
-)
+
+updateTimeElements()
+setInterval(updateTimeElements, 1000)
+
 
 chrome.storage.sync.get(["name"], (res) => {
   const name = res.name ?? "???"
