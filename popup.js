@@ -37,6 +37,7 @@ stopBtn.addEventListener("click", () => {
 })
 resetBtn.addEventListener("click", () => {
   chrome.storage.local.set({
+    timer: 0,
     isRunning: false,
   })
 })
